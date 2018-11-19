@@ -9,12 +9,12 @@ public class HelloController
     @RequestMapping("/")
     public String homePage()
     {
-        return "<p>Hello World</p>";
+        return "{ \"status\": \"200\" }";
     }
 
-    @RequestMapping("/api")
+    @RequestMapping("/live")
     public String api()
     {
-        return "{ \"status\": \"200\" }";
+        return "No live data";
     }
 }
