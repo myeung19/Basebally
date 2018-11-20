@@ -1,15 +1,16 @@
 .paperOuter {
     padding: 1px;
-    height: 100%;
+    height: 85%;
     background-color: white;
 
-    display: flex;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-direction: column;*/
 }
 
 .paper {
     margin: 5px;
     padding: 10px;
-    flex: 1;
+    height: 92%;
+
     text-align: center;
 }
