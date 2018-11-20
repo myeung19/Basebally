@@ -1,0 +1,7 @@
+.appBar {
+    flex-flow: unset;
+}
+
+.settingBtn {
+    float: right;
+}
