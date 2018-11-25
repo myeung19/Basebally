@@ -1,9 +1,9 @@
 import React from 'react';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import LiveIcon from '@material-ui/icons/RssFeed';
+import StandingsIcon from '@material-ui/icons/Toc';
+import SearchIcon from '@material-ui/icons/Search';
 
 import './BottomNavigationBar.css'
 
@@ -15,9 +15,9 @@ const bottomNavigationBar = (props) => {
                 onChange={props.onChange}
                 showLabels
             >
-                <BottomNavigationAction label="Recents" icon={<RestoreIcon/>}/>
-                <BottomNavigationAction label="Favorites" icon={<FavoriteIcon/>}/>
-                <BottomNavigationAction label="Nearby" icon={<LocationOnIcon/>}/>
+                <BottomNavigationAction label="Live" value="Live" icon={<LiveIcon/>}/>
+                <BottomNavigationAction label="Standings" value="Standings" icon={<StandingsIcon/>}/>
+                <BottomNavigationAction label="Search" value="Search" icon={<SearchIcon/>}/>
             </BottomNavigation>
         </div>
     );

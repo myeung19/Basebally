@@ -23,7 +23,7 @@ const appBar = (props) => {
         <div className={classes.root}>
             <AppBar position="static" color="default">
                 <Toolbar>
-                    <h2>I am a appbar</h2>
+                    <h2>{props.pageName}</h2>
                     <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                         <MenuIcon />
                     </IconButton>
