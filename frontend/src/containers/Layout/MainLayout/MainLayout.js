@@ -9,34 +9,34 @@ import './MainLayout.css';
 
 class MainLayout extends React.Component {
     state = {
-        pageValue: 0,
+        currentPage: "Live",
     };
 
     handleChange = (event, value) => {
         this.setState({
-            pageValue: value
+            currentPage: value
         });
     };
 
     render() {
         let page = null;
-        switch (this.state.pageValue) {
-            case 0:
+        switch (this.state.currentPage) {
+            case "Live":
                 page = <LivePage/>;
                 break;
-            case 1:
+            case "Standings":
                 page = <RankingPage/>;
                 break;
-            case 2:
+            case "Search":
                 page = <SearchPage/>;
                 break;
         }
 
         return (
             <div className="container">
-                <Appbar/>
-                {page}
-                <BottomNavigationBar value={this.state.pageValue} onChange={this.handleChange}/>
+                <Appbar pageName={this.state.currentPage}/>
+                    {page}
+                <BottomNavigationBar value={this.state.currentPage} onChange={this.handleChange}/>
             </div>
         );
     }

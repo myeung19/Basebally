@@ -6,9 +6,9 @@ import './CustomPaper.css'
 const customPaper = (props) => {
     return (
         <div className="paperOuter">
-            <Paper className="paper">
-                {props.value}
-            </Paper>
+            {/*<Paper className="paper">*/}
+                {props.children}
+            {/*</Paper>*/}
         </div>
     );
 };
