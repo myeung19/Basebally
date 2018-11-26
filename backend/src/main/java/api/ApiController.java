@@ -2,6 +2,7 @@ package api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import utils.ApiDataExtractor;
@@ -11,8 +12,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Map;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
-public class HelloController
+public class ApiController
 {
     @RequestMapping("/")
     public String homePage()
