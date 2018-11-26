@@ -6,8 +6,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import RefreshIcon from '@material-ui/icons/Refresh';
 
-import { getTeamName } from '../../../util/utils';
+import {getTeamName, getTeamIcon} from '../../../util/utils';
 import "./StandingsPage.css"
 
 class StandingsPage extends Component {
@@ -55,7 +56,13 @@ class StandingsPage extends Component {
                                                     const rankInfo = rank.split(" - ");
                                                     return (
                                                         <TableRow key={i}>
-                                                            <TableCell>{getTeamName(rankInfo[0])}</TableCell>
+                                                            <TableCell>
+                                                                <div className="teamNameBlock">
+                                                                    <img className="teamIcon"
+                                                                         src={getTeamIcon(rankInfo[0])} alt=""/>
+                                                                    <p>{getTeamName(rankInfo[0])}</p>
+                                                                </div>
+                                                            </TableCell>
                                                             <TableCell>{rankInfo[1]}</TableCell>
                                                             <TableCell>{rankInfo[2]}</TableCell>
                                                             <TableCell>{rankInfo[3].slice(2, 4)}</TableCell>
@@ -65,7 +72,7 @@ class StandingsPage extends Component {
                                             }
                                         </TableBody>
                                     </Table>
-                                    <br />
+                                    <br/>
                                 </div>
                             )
                         })

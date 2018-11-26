@@ -12,3 +12,18 @@
 .containerTitle {
     margin: 10px;
 }
+
+.teamIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.teamNameBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.teamNameBlock p{
+    margin-left: 5px;
+}
