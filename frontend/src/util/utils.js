@@ -55,6 +55,7 @@ export function getTeamName(code) {
         case "HOU":
             return "Houston Astros";
         case "KAN":
+        case "KC":
             return "Kansas City Royals";
         case "LAA":
             return "Los Angeles Angels";
@@ -109,6 +110,7 @@ export function getTeamIcon(code) {
         case "CHC":
             return CHC;
         case "CHW":
+        case "CWS":
             return CHW;
         case "CIN":
             return CIN;
@@ -121,6 +123,7 @@ export function getTeamIcon(code) {
         case "HOU":
             return HOU;
         case "KAN":
+        case "KC":
             return KAN;
         case "LAA":
             return LAA;
@@ -157,6 +160,7 @@ export function getTeamIcon(code) {
         case "TOR":
             return TOR;
         case "WSN":
+        case "WAS":
             return WSN;
     }
 };
