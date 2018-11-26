@@ -2,7 +2,7 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from "@material-ui/core/es/IconButton/IconButton";
-import MenuIcon from '@material-ui/icons/Menu';
+import RefreshIcon from '@material-ui/icons/Refresh';
 
 import './Appbar.css'
 import {withStyles} from "@material-ui/core";
@@ -25,7 +25,7 @@ const appBar = (props) => {
                 <Toolbar>
                     <h2>{props.pageName}</h2>
                     <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                        <MenuIcon />
+                        <RefreshIcon />
                     </IconButton>
                 </Toolbar>
             </AppBar>

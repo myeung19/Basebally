@@ -2,14 +2,14 @@ import React from 'react';
 import Appbar from '../../../components/Appbar/Appbar'
 import BottomNavigationBar from '../../../components/Navigation/BottomNavigationBar/BottomNavigationBar'
 import LivePage from '../../Page/LivePage/LivePage';
-import RankingPage from '../../Page/RankingPage/RankingPage';
+import StandingsPage from '../../Page/StandingsPage/StandingsPage';
 import SearchPage from '../../Page/SearchPage/SearchPage'
 
 import './MainLayout.css';
 
 class MainLayout extends React.Component {
     state = {
-        currentPage: "Live",
+        currentPage: "Game",
     };
 
     handleChange = (event, value) => {
@@ -21,11 +21,11 @@ class MainLayout extends React.Component {
     render() {
         let page = null;
         switch (this.state.currentPage) {
-            case "Live":
+            case "Game":
                 page = <LivePage/>;
                 break;
             case "Standings":
-                page = <RankingPage/>;
+                page = <StandingsPage/>;
                 break;
             case "Search":
                 page = <SearchPage/>;

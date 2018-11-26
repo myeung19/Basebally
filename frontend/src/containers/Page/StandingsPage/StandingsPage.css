@@ -1,0 +1,14 @@
+.StandingsPage {
+    margin: 5px;
+    padding: 5px;
+}
+
+.paperTableContainer {
+    /*min-width: 600px;*/
+    padding: 5px;
+    margin-bottom: 50px;
+}
+
+.containerTitle {
+    margin: 10px;
+}
