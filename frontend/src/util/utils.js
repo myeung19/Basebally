@@ -42,6 +42,7 @@ export function getTeamName(code) {
         case "CHC":
             return "Chicago Cubs";
         case "CHW":
+        case "CWS":
             return "Chicago White Sox";
         case "CIN":
             return "Cincinnati Reds";
@@ -90,6 +91,7 @@ export function getTeamName(code) {
         case "TOR":
             return "Toronto Blue Jays";
         case "WSN":
+        case "WAS":
             return "Washington Nationals";
     }
 };

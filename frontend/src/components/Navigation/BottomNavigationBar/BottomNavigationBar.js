@@ -15,7 +15,7 @@ const bottomNavigationBar = (props) => {
                 onChange={props.onChange}
                 showLabels
             >
-                <BottomNavigationAction label="Live" value="Live" icon={<LiveIcon/>}/>
+                <BottomNavigationAction label="Game" value="Game" icon={<LiveIcon/>}/>
                 <BottomNavigationAction label="Standings" value="Standings" icon={<StandingsIcon/>}/>
                 <BottomNavigationAction label="Search" value="Search" icon={<SearchIcon/>}/>
             </BottomNavigation>
