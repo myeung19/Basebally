@@ -1,5 +1,6 @@
 package api;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,12 +29,12 @@ public class ApiController
         return "No live data";
     }
 
-    @RequestMapping(path = "/team_standings", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/team_standings", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String getStandings() throws IOException
     {
         String response = HttpHelper.fetchDataFromAPI("https://api.mysportsfeeds.com/v1.2/pull/mlb/2018-regular/division_team_standings.json");
         Map<String, LinkedList<String>> standings = ApiDataExtractor.getStandingFromApi(response);
 
-        return new ObjectMapper().writeValueAsString(standings);
+        return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(standings);
     }
 }
