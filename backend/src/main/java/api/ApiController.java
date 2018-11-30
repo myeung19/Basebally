@@ -1,11 +1,11 @@
 package api;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import utils.ApiDataExtractor;
 import utils.HttpHelper;
 
@@ -24,9 +24,9 @@ public class ApiController
     }
 
     @RequestMapping("/game")
-    public String api()
+    public String getGame()
     {
-        return "No live data";
+        return "{ \"status\": \"200\" }";
     }
 
     @RequestMapping(path = "/team_standings", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -36,5 +36,20 @@ public class ApiController
         Map<String, LinkedList<String>> standings = ApiDataExtractor.getStandingFromApi(response);
 
         return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(standings);
+    }
+
+    @GetMapping(path = "/playerStats", params = "player", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public String getPlayerStats(@RequestParam("player") String player) throws IOException
+    {
+//        String profileData = HttpHelper.fetchDataFromAPI("https://api.mysportsfeeds.com/v1.2/pull/mlb/2018-regular/active_players.json?player=shohei-ohtani");
+//        String statsData = HttpHelper.fetchDataFromAPI("https://api.mysportsfeeds.com/v1.2/pull/mlb/2018-regular/cumulative_player_stats.json?player=shohei-ohtani");
+        String profileData = HttpHelper.fetchDataFromAPI("https://api.mysportsfeeds.com/v1.2/pull/mlb/2018-regular/active_players.json?player=" + player);
+        String statsData = HttpHelper.fetchDataFromAPI("https://api.mysportsfeeds.com/v1.2/pull/mlb/2018-regular/cumulative_player_stats.json?player=" + player);
+
+        Map<String, JsonNode> stats = ApiDataExtractor.getPlayerStats(profileData, statsData);
+        if (stats == null)
+            return "{ \"error\" : \"Player not found\" }";
+
+        return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(stats);
     }
 }
