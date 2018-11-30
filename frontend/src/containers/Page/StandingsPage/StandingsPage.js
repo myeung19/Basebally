@@ -6,24 +6,26 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import RefreshIcon from '@material-ui/icons/Refresh';
 
-import {getTeamName, getTeamIcon} from '../../../util/utils';
+import {getTeamInfo} from '../../../util/utils';
 import "./StandingsPage.css"
 
 class StandingsPage extends Component {
     state = {
-        data: {}
+        data: localStorage.getItem("standings") ? JSON.parse(localStorage.getItem("standings")) : {}
     };
 
     componentDidMount() {
-        axios.get("http://www.basebally.net/api/team_standings")
-            .then((response) => {
-                console.log(response);
-                this.setState({
-                    data: response.data
+        if (this.state.data) {
+            axios.get("http://www.basebally.net/api/team_standings")
+                .then((response) => {
+                    console.log(response);
+                    localStorage.setItem("standings", JSON.stringify(response.data));
+                    this.setState({
+                        data: response.data
+                    })
                 })
-            })
+        }
     }
 
     render() {
@@ -35,7 +37,6 @@ class StandingsPage extends Component {
                 <Paper className="paperTableContainer">
                     {
                         keys.map((el, index) => {
-                            console.log(data[el]);
                             const rankings = data[el];
 
                             return (
@@ -59,8 +60,8 @@ class StandingsPage extends Component {
                                                             <TableCell>
                                                                 <div className="teamNameBlock">
                                                                     <img className="teamIcon"
-                                                                         src={getTeamIcon(rankInfo[0])} alt=""/>
-                                                                    <p>{getTeamName(rankInfo[0])}</p>
+                                                                         src={getTeamInfo(rankInfo[0]).imgSrc} alt=""/>
+                                                                    <p>{getTeamInfo(rankInfo[0]).name}</p>
                                                                 </div>
                                                             </TableCell>
                                                             <TableCell>{rankInfo[1]}</TableCell>
