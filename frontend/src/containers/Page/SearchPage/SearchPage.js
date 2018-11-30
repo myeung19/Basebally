@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import CustomPaper from "../../../components/CustomPaper/CustomPaper";
+import SearchBar from '../../../components/Appbar/SearchBar/SearchBar'
 
 class SearchPage extends Component {
     render() {
         return (
-            <CustomPaper value="SearchPage"/>
+            <>
+                <SearchBar/>
+            </>
         );
     }
 }
