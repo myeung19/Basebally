@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card'
 import CardContent from "@material-ui/core/es/CardContent/CardContent";
 import GameIcon from '../../../components/Icon/GameIcon/GameIcon'
-import { getTeamName, getTeamIcon } from '../../../util/utils';
+import {getTeamInfo} from '../../../util/utils';
 
 import './GameCard.css'
 
@@ -23,17 +23,31 @@ const gameCard = () => {
     ];
 
     return (
-        propsData.map((element, index) => (
-            <Card key={index} className="Card">
-                <CardContent>
-                    <div className="content">
-                        <GameIcon teamName={getTeamName(element.homeTeam)} imgSrc={getTeamIcon(element.homeTeam)}/>
-                        <p>Final</p>
-                        <GameIcon teamName={getTeamName(element.awayTeam)} imgSrc={getTeamIcon(element.awayTeam)}/>
-                    </div>
-                </CardContent>
-            </Card>
-        ))
+        propsData.map((element, index) => {
+            let hTeam = getTeamInfo(element.homeTeam);
+            let aTeam = getTeamInfo(element.awayTeam);
+            return (
+                <Card key={index} className="Card">
+                    <CardContent>
+                        <div className="content">
+                            <GameIcon
+                                teamCity={hTeam.city}
+                                teamName={hTeam.name}
+                                teamScore={element.homeScore}
+                                imgSrc={hTeam.imgSrc}/>
+                            <h2>{element.homeScore}</h2>
+                            <p>Final</p>
+                            <h2>{element.awayScore}</h2>
+                            <GameIcon
+                                teamCity={aTeam.city}
+                                teamName={aTeam.name}
+                                teamScore={element.awayScore}
+                                imgSrc={aTeam.imgSrc}/>
+                        </div>
+                    </CardContent>
+                </Card>
+            )
+        })
     );
 };
 

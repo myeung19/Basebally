@@ -29,138 +29,74 @@ import TEX from '../assets/image/teamsIcon/TEX.png';
 import TOR from '../assets/image/teamsIcon/TOR.png';
 import WSN from '../assets/image/teamsIcon/WSN.png';
 
-export function getTeamName(code) {
+export function getTeamInfo(code) {
     switch (code) {
         case "ARI":
-            return "Arizona Diamondbacks";
+            return getTeamObj("Arizona", "Diamondbacks", ARI);
         case "ATL":
-            return "Atlanta Braves";
+            return getTeamObj("Atlanta", "Braves", ATL);
         case "BAL":
-            return "Baltimore Orioles";
+            return getTeamObj("Baltimore", "Orioles", BAL);
         case "BOS":
-            return "Boston Red Sox";
+            return getTeamObj("Boston", "Red Sox", BOS);
         case "CHC":
-            return "Chicago Cubs";
+            return getTeamObj("Chicago", "Cubs", CHC);
         case "CHW":
         case "CWS":
-            return "Chicago White Sox";
+            return getTeamObj("Chicago", "White Sox", CHW);
         case "CIN":
-            return "Cincinnati Reds";
+            return getTeamObj("Cincinnati", "Reds", CIN);
         case "CLE":
-            return "Cleveland Indians";
+            return getTeamObj("Cleveland", "Indians", CLE);
         case "COL":
-            return "Colorado Rockies";
+            return getTeamObj("Colorado", "Rockies", COL);
         case "DET":
-            return "Detroit Tigers";
+            return getTeamObj("Detroit", "Tigers", DET);
         case "HOU":
-            return "Houston Astros";
+            return getTeamObj("Houston", "Astros", HOU);
         case "KAN":
         case "KC":
-            return "Kansas City Royals";
+            return getTeamObj("Kansas City", "Royals", KAN);
         case "LAA":
-            return "Los Angeles Angels";
+            return getTeamObj("Los Angeles", "Angels", LAA);
         case "LAD":
-            return "Los Angeles Dodgers";
+            return getTeamObj("Los Angeles", "Dodgers", LAD);
         case "MIA":
-            return "Miami Marlins";
+            return getTeamObj("Miami", "Marlins", MIA);
         case "MIL":
-            return "Milwaukee Brewers";
+            return getTeamObj("Milwaukee", "Brewers", MIL);
         case "MIN":
-            return "Minnesota Twins";
+            return getTeamObj("Minnesota", "Twins", MIN);
         case "NYM":
-            return "New York Mets";
+            return getTeamObj("New York", "Mets", NYM);
         case "NYY":
-            return "New York Yankees";
+            return getTeamObj("New York", "Yankees", NYY);
         case "OAK":
-            return "Oakland Athletics";
+            return getTeamObj("Oakland", "Athletics", OAK);
         case "PHI":
-            return "Philadelphia Phillies";
+            return getTeamObj("Philadelphia", "Phillies", PHI);
         case "PIT":
-            return "Pittsburgh Pirates";
+            return getTeamObj("Pittsburgh", "Pirates", PIT);
         case "SD":
-            return "San Diego Padres";
+            return getTeamObj("San Diego", "Padres", SD);
         case "SEA":
-            return "Seattle Mariners";
+            return getTeamObj("Seattle", "Mariners", SEA);
         case "SF":
-            return "San Francisco Giants";
+            return getTeamObj("San Francisco", "Giants", SF);
         case "STL":
-            return "St. Louis Cardinals";
+            return getTeamObj("St. Louis", "Cardinals", STL);
         case "TB":
-            return "Tampa Bay Rays";
+            return getTeamObj("Tampa Bay", "Rays", TB);
         case "TEX":
-            return "Texas Rangers";
+            return getTeamObj("Texas", "Rangers", TEX);
         case "TOR":
-            return "Toronto Blue Jays";
+            return getTeamObj("Toronto", "Blue Jays", TOR);
         case "WSN":
         case "WAS":
-            return "Washington Nationals";
+            return getTeamObj("Washington", "Nationals", WSN);
     }
 };
 
-export function getTeamIcon(code) {
-    switch (code) {
-        case "ARI":
-            return ARI;
-        case "ATL":
-            return ATL;
-        case "BAL":
-            return BAL;
-        case "BOS":
-            return BOS;
-        case "CHC":
-            return CHC;
-        case "CHW":
-        case "CWS":
-            return CHW;
-        case "CIN":
-            return CIN;
-        case "CLE":
-            return CLE;
-        case "COL":
-            return COL;
-        case "DET":
-            return DET;
-        case "HOU":
-            return HOU;
-        case "KAN":
-        case "KC":
-            return KAN;
-        case "LAA":
-            return LAA;
-        case "LAD":
-            return LAD;
-        case "MIA":
-            return MIA;
-        case "MIL":
-            return MIL;
-        case "MIN":
-            return MIN;
-        case "NYM":
-            return NYM;
-        case "NYY":
-            return NYY;
-        case "OAK":
-            return OAK;
-        case "PHI":
-            return PHI;
-        case "PIT":
-            return PIT;
-        case "SD":
-            return SD;
-        case "SEA":
-            return SEA;
-        case "SF":
-            return SF;
-        case "STL":
-            return STL;
-        case "TB":
-            return TB;
-        case "TEX":
-            return TEX;
-        case "TOR":
-            return TOR;
-        case "WSN":
-        case "WAS":
-            return WSN;
-    }
-};
+function getTeamObj(city, name, img) {
+    return { "city": city, "name": name, "imgSrc": img}
+}
