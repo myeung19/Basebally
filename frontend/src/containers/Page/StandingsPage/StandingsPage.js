@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import RefreshBar from '../../../components/Appbar/RefreshBar/RefreshBar';
 
 import {getTeamInfo} from '../../../util/utils';
 import "./StandingsPage.css"
@@ -34,6 +35,7 @@ class StandingsPage extends Component {
 
         return (
             <div className="StandingsPage">
+                <RefreshBar />
                 <Paper className="paperTableContainer">
                     {
                         keys.map((el, index) => {

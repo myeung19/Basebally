@@ -34,7 +34,6 @@ class MainLayout extends React.Component {
 
         return (
             <div className="container">
-                <Appbar pageName={this.state.currentPage}/>
                     {page}
                 <BottomNavigationBar value={this.state.currentPage} onChange={this.handleChange}/>
             </div>
