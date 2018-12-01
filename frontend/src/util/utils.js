@@ -95,7 +95,7 @@ export function getTeamInfo(code) {
         case "WAS":
             return getTeamObj("Washington", "Nationals", WSN);
     }
-};
+}
 
 function getTeamObj(city, name, img) {
     return { "city": city, "name": name, "imgSrc": img}

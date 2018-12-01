@@ -1,5 +1,4 @@
 import React from 'react';
-import Appbar from '../../../components/Appbar/Appbar'
 import BottomNavigationBar from '../../../components/Navigation/BottomNavigationBar/BottomNavigationBar'
 import LivePage from '../../Page/LivePage/LivePage';
 import StandingsPage from '../../Page/StandingsPage/StandingsPage';
@@ -9,7 +8,7 @@ import './MainLayout.css';
 
 class MainLayout extends React.Component {
     state = {
-        currentPage: "Game",
+        currentPage: "Search",
     };
 
     handleChange = (event, value) => {
