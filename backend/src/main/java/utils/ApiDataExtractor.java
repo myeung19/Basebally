@@ -71,30 +71,32 @@ public class ApiDataExtractor
 
     private static JsonNode getPlayerProfileFromApi(String data) throws IOException
     {
+        Map<String, JsonNode> profile = new HashMap<>();
+
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(data);
         if (rootNode.get("activeplayers").get("playerentry") == null) return null;
 
         List<String> removedField = Arrays.asList("HighSchool", "College", "Twitter", "RosterStatus", "handedness", "draft", "currentContractYear", "externalMapping");
 
+        JsonNode playerTeamInfoNode = rootNode.path("activeplayers").path("playerentry").path(0).get("team");
         JsonNode playerInfoNode = rootNode.path("activeplayers").path("playerentry").path(0).get("player");
         removedField.forEach(((ObjectNode) playerInfoNode)::remove);
+        ((ObjectNode) playerInfoNode).put("team", playerTeamInfoNode);
 
-        JsonNode playerTeamInfoNode = rootNode.path("activeplayers").path("playerentry").path(0).get("team");
+        profile.put("bio", playerInfoNode);
+//        ((ObjectNode) profileNode).put("team", playerTeamInfoNode);
 
-        JsonNode profileNode = mapper.createObjectNode();
-        ((ObjectNode) profileNode).put("bio", playerInfoNode);
-        ((ObjectNode) profileNode).put("team", playerTeamInfoNode);
+        System.out.println(playerInfoNode.toString());
 
-        System.out.println(profileNode.toString());
-
-        return profileNode;
+        return mapper.valueToTree(profile);
     }
 
     private static JsonNode getPlayerStatsFromApi(String data, String position) throws IOException
     {
+        Map<String, JsonNode> stats = new HashMap<>();
+
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode statsNode = mapper.createObjectNode();
         JsonNode rootNode = mapper.readTree(data).get("cumulativeplayerstats").get("playerstatsentry").get(0).get("stats");
 
         if (position.equals("P"))
@@ -108,13 +110,13 @@ public class ApiDataExtractor
             JsonNode SO = rootNode.get("BatterStrikeouts");
             JsonNode WHIP = rootNode.get("WalksAndHitsPerInningPitched");
 
-            ((ObjectNode) statsNode).put("GamesPlayed", G);
-            ((ObjectNode) statsNode).put("Wins", W);
-            ((ObjectNode) statsNode).put("Losses", L);
-            ((ObjectNode) statsNode).put("EarnedRunAvg", ERA);
-            ((ObjectNode) statsNode).put("InningsPitched", IP);
-            ((ObjectNode) statsNode).put("BatterStrikeouts", SO);
-            ((ObjectNode) statsNode).put("WalksAndHitsPerInningPitched", WHIP);
+            stats.put("GamesPlayed", G);
+            stats.put("Wins", W);
+            stats.put("Losses", L);
+            stats.put("EarnedRunAvg", ERA);
+            stats.put("InningsPitched", IP);
+            stats.put("BatterStrikeouts", SO);
+            stats.put("WalksAndHitsPerInningPitched", WHIP);
         }
         else
         {
@@ -126,14 +128,14 @@ public class ApiDataExtractor
             JsonNode SB = rootNode.get("StolenBases");
             JsonNode OPS = rootNode.get("BatterOnBasePlusSluggingPct");
 
-            ((ObjectNode) statsNode).put("GamesPlayed", AB);
-            ((ObjectNode) statsNode).put("Wins", AVG);
-            ((ObjectNode) statsNode).put("Losses", HR);
-            ((ObjectNode) statsNode).put("EarnedRunAvg", RBI);
-            ((ObjectNode) statsNode).put("InningsPitched", SB);
-            ((ObjectNode) statsNode).put("BatterStrikeouts", OPS);
+            stats.put("GamesPlayed", AB);
+            stats.put("Wins", AVG);
+            stats.put("Losses", HR);
+            stats.put("EarnedRunAvg", RBI);
+            stats.put("InningsPitched", SB);
+            stats.put("BatterStrikeouts", OPS);
         }
 
-        return statsNode;
+        return mapper.valueToTree(stats);
     }
 }

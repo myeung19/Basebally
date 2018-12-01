@@ -41,8 +41,6 @@ public class ApiController
     @GetMapping(path = "/playerStats", params = "player", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String getPlayerStats(@RequestParam("player") String player) throws IOException
     {
-//        String profileData = HttpHelper.fetchDataFromAPI("https://api.mysportsfeeds.com/v1.2/pull/mlb/2018-regular/active_players.json?player=shohei-ohtani");
-//        String statsData = HttpHelper.fetchDataFromAPI("https://api.mysportsfeeds.com/v1.2/pull/mlb/2018-regular/cumulative_player_stats.json?player=shohei-ohtani");
         String profileData = HttpHelper.fetchDataFromAPI("https://api.mysportsfeeds.com/v1.2/pull/mlb/2018-regular/active_players.json?player=" + player);
         String statsData = HttpHelper.fetchDataFromAPI("https://api.mysportsfeeds.com/v1.2/pull/mlb/2018-regular/cumulative_player_stats.json?player=" + player);
 
