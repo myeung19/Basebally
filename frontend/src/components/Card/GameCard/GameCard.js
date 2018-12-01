@@ -29,7 +29,7 @@ const gameCard = () => {
             return (
                 <Card key={index} className="Card">
                     <CardContent>
-                        <div className="content">
+                        <div className="cardContent">
                             <GameIcon
                                 teamCity={hTeam.city}
                                 teamName={hTeam.name}
