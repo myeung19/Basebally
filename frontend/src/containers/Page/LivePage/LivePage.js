@@ -9,9 +9,9 @@ class LivePage extends Component {
         return (
             <div className="LivePage">
                 <RefreshBar/>
-                {/*<div className="content">*/}
+                <div className="livePageContent">
                     <GameCard data={null}/>
-                {/*</div>*/}
+                </div>
             </div>
         );
     }
