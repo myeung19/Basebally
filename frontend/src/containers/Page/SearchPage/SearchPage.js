@@ -5,25 +5,20 @@ import SearchBar from '../../../components/Appbar/SearchBar/SearchBar';
 import ResultCard from '../../../components/Card/ResultCard/ResultCard';
 import ProfileDialog from '../../../components/Dialog/ProfileDialog/ProfileDialog'
 
+import './SearchPage.css'
+
 class SearchPage extends Component {
     state = {
         data: [],
         selectedIndex: -1,
+        isError: false,
         isLoading: false,
         isSearchBtnDisabled: false,
         isDialogOpened: false,
     };
 
     handleSearchBtnClick = (textFieldRef) => {
-        console.log(textFieldRef);
-        console.log(textFieldRef.value);
-        let playerNames = textFieldRef.value.split(" ");
-        this.setState({
-            isLoading: true,
-            isSearchBtnDisabled: true,
-        });
-
-        this.getPlayerStats(`${playerNames[0]}-${playerNames[1]}`);
+        this.getPlayerStats(textFieldRef);
     };
 
     handleResultCardOnClick = (index) => {
@@ -41,10 +36,26 @@ class SearchPage extends Component {
         })
     };
 
-    getPlayerStats(playerName) {
-        axios.get(`http://www.basebally.net/api/playerStats?player=${playerName}`)
+    handleSearchBtnOnKeyPress = (event, textFieldRef) => {
+        if (event.key === 'Enter') {
+            this.getPlayerStats(textFieldRef);
+        }
+    };
+
+    getPlayerStats(textFieldRef) {
+        let playerNames = textFieldRef.value.split(" ");
+        this.setState({
+            isLoading: true,
+            isSearchBtnDisabled: true,
+        });
+
+        axios.get(`http://www.basebally.net/api/playerStats?player=${playerNames[0]}-${playerNames[1]}`)
             .then((response) => {
+                const data = [{...response.data}];
+                // console.log(data);
+
                 this.setState({
+                    isError: data[0].error !== undefined,
                     isLoading: false,
                     isSearchBtnDisabled: false,
                     data: [{...response.data}]
@@ -53,18 +64,25 @@ class SearchPage extends Component {
     }
 
     render() {
-        const {data, selectedIndex, isLoading, isSearchBtnDisabled, isDialogOpened} = this.state;
+        const {data, selectedIndex, isError, isLoading, isSearchBtnDisabled, isDialogOpened} = this.state;
 
         return (
-            <>
+            <div className="SearchPage">
                 <SearchBar
                     btnDisabled={isSearchBtnDisabled}
-                    searchBtnOnClick={this.handleSearchBtnClick}/>
-                { isLoading ?
-                    <CircularProgress /> : null
+                    searchBtnOnClick={this.handleSearchBtnClick}
+                    searchBtnOnKeyPress={this.handleSearchBtnOnKeyPress}/>
+                {isLoading ?
+                    <div className="loadingComponent">
+                        <CircularProgress/>
+                    </div> : null
                 }
                 {
-                    data.length !== 0 ?
+                    isError ?
+                        <p>Player not found</p> : null
+                }
+                {
+                    data.length !== 0 && isLoading !== true && !isError ?
                         data.map((el, index) => {
                             const bio = el.playerProfile.bio;
 
@@ -87,7 +105,7 @@ class SearchPage extends Component {
                             handleClose={this.handleDialogClosed}/>
                         : null
                 }
-            </>
+            </div>
         );
     }
 }
