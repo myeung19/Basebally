@@ -1,0 +1,13 @@
+.appBar {
+    height: 10%;
+    flex-grow: 1;
+}
+
+.btnContainer {
+    float: right;
+}
+
+.settingBtn {
+    margin-left: auto;
+    margin-right: -12px;
+}

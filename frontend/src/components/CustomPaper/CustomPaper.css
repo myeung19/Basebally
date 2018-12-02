@@ -1,0 +1,19 @@
+.paperOuter {
+    /*padding: 1px;*/
+    /*height: 85%;*/
+    /*background-color: white;*/
+
+    /*display: flex;*/
+    /*flex-direction: column;*/
+}
+
+.paper {
+    /*margin: 5px;*/
+    /*padding: 10px;*/
+    height: 92%;
+
+    overflow: scroll;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}

@@ -5,6 +5,9 @@
   "author": "Chun Ming Yeung",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.5.1",
+    "@material-ui/icons": "^3.0.1",
+    "axios": "^0.18.0",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
     "electron-is-dev": "^1.0.1",
@@ -35,7 +38,7 @@
     "react-eject": "react-scripts eject",
     "electron-build": "electron-builder",
     "release": "npm run react-build && electron-builder --publish=always",
-    "build": "yarn react-build && yarn electron-build",
+    "build": "npm run react-build && npm run electron-build",
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {

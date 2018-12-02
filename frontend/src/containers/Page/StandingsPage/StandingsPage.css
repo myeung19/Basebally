@@ -1,0 +1,31 @@
+.StandingsPage {
+    display: flex;
+    flex-direction: row;
+}
+
+.paperTableContainer {
+    padding: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.containerTitle {
+    margin: 10px;
+}
+
+.teamIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.teamNameBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.teamNameBlock p{
+    margin-left: 5px;
+}
