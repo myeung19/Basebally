@@ -18,15 +18,23 @@ class StandingsPage extends Component {
 
     componentDidMount() {
         if (this.state.data) {
-            axios.get("http://www.basebally.net/api/team_standings")
-                .then((response) => {
-                    console.log(response);
-                    localStorage.setItem("standings", JSON.stringify(response.data));
-                    this.setState({
-                        data: response.data
-                    })
-                })
+            this.getDataFromApi();
         }
+    }
+
+    handleRefreshBtnOnClick = () => {
+        this.getDataFromApi();
+    };
+
+    getDataFromApi() {
+        axios.get("http://www.basebally.net/api/standings")
+            .then((response) => {
+                console.log(response);
+                localStorage.setItem("standings", JSON.stringify(response.data));
+                this.setState({
+                    data: response.data
+                })
+            })
     }
 
     render() {
@@ -35,7 +43,7 @@ class StandingsPage extends Component {
 
         return (
             <div className="StandingsPage">
-                <RefreshBar />
+                <RefreshBar refreshBtnOnClick={this.handleRefreshBtnOnClick}/>
                 <Paper className="paperTableContainer">
                     {
                         keys.map((el, index) => {

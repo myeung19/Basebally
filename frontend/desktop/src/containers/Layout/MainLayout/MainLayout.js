@@ -1,6 +1,6 @@
 import React from 'react';
 import BottomNavigationBar from '../../../components/Navigation/BottomNavigationBar/BottomNavigationBar'
-import LivePage from '../../Page/LivePage/LivePage';
+import GamePage from '../../Page/GamePage/GamePage';
 import StandingsPage from '../../Page/StandingsPage/StandingsPage';
 import SearchPage from '../../Page/SearchPage/SearchPage'
 
@@ -8,7 +8,7 @@ import './MainLayout.css';
 
 class MainLayout extends React.Component {
     state = {
-        currentPage: "Search",
+        currentPage: "Game",
     };
 
     handleChange = (event, value) => {
@@ -21,7 +21,7 @@ class MainLayout extends React.Component {
         let page = null;
         switch (this.state.currentPage) {
             case "Game":
-                page = <LivePage/>;
+                page = <GamePage/>;
                 break;
             case "Standings":
                 page = <StandingsPage/>;
