@@ -12,21 +12,24 @@ import utils.HttpHelper;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Random;
 
 @CrossOrigin(maxAge = 3600)
 @RestController
 public class ApiController
 {
-    @RequestMapping("/")
+    @GetMapping("/")
     public String homePage()
     {
         return "{ \"status\": \"200\" }";
     }
 
-    @RequestMapping("/game")
-    public String getGame()
+    @GetMapping("/game")
+    public String getGame() throws IOException
     {
-        return "{ \"status\": \"200\" }";
+        String[] games = {"[{\"Inning\": \"Final\", \"homeTeam\": \"DET\", \"homeScore\": 5, \"awayTeam\": \"NYY\", \"awayScore\": 10}, {\"Inning\": \"1st\", \"homeTeam\": \"SF\", \"homeScore\": 15, \"awayTeam\": \"SD\", \"awayScore\": 1}]",
+                "[{\"Inning\": \"Final\", \"homeTeam\": \"LAA\", \"homeScore\": 6, \"awayTeam\": \"LAD\", \"awayScore\": 10}, {\"Inning\": \"7th\", \"homeTeam\": \"BOS\", \"homeScore\": 10, \"awayTeam\": \"NYY\", \"awayScore\": 1}]"};
+        return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(games[new Random().nextInt(1)]);;
     }
 
     @RequestMapping(path = "/team_standings", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
