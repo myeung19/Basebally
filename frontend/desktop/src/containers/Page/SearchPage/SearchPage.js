@@ -4,6 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchBar from '../../../components/Appbar/SearchBar/SearchBar';
 import ResultCard from '../../../components/Card/ResultCard/ResultCard';
 import ProfileDialog from '../../../components/Dialog/ProfileDialog/ProfileDialog'
+import ErrorSnackBar from '../../../components/SnackBar/ErrorSnackBar/ErrorSnackBar'
 
 import './SearchPage.css'
 
@@ -13,6 +14,7 @@ class SearchPage extends Component {
         selectedIndex: -1,
         isError: false,
         isLoading: false,
+        isErrorSnackBarOpened: false,
         isSearchBtnDisabled: false,
         isDialogOpened: false,
     };
@@ -42,6 +44,12 @@ class SearchPage extends Component {
         }
     };
 
+    handleErrorSnackBarClose = () => {
+        this.setState({
+            isErrorSnackBarOpened: false
+        })
+    };
+
     getPlayerStats(textFieldRef) {
         let playerNames = textFieldRef.value.split(" ");
         this.setState({
@@ -56,6 +64,7 @@ class SearchPage extends Component {
 
                 this.setState({
                     isError: data[0].error !== undefined,
+                    isErrorSnackBarOpened: data[0].error !== undefined,
                     isLoading: false,
                     isSearchBtnDisabled: false,
                     data: [{...response.data}]
@@ -64,7 +73,7 @@ class SearchPage extends Component {
     }
 
     render() {
-        const {data, selectedIndex, isError, isLoading, isSearchBtnDisabled, isDialogOpened} = this.state;
+        const {data, selectedIndex, isError, isLoading, isErrorSnackBarOpened, isSearchBtnDisabled, isDialogOpened} = this.state;
 
         return (
             <div className="SearchPage">
@@ -72,17 +81,20 @@ class SearchPage extends Component {
                     btnDisabled={isSearchBtnDisabled}
                     searchBtnOnClick={this.handleSearchBtnClick}
                     searchBtnOnKeyPress={this.handleSearchBtnOnKeyPress}/>
-                {isLoading ?
-                    <div className="loadingComponent">
-                        <CircularProgress/>
-                    </div> : null
+                {
+                    isLoading ?
+                        <div className="loadingComponent">
+                            <CircularProgress/>
+                        </div> : null
                 }
                 {
                     isError ?
-                        <p>Player not found</p> : null
+                        <ErrorSnackBar
+                            isErrorSnackBarOpened={isErrorSnackBarOpened}
+                            handleErrorSnackBarClose={this.handleErrorSnackBarClose} /> : null
                 }
                 {
-                    data.length !== 0 && isLoading !== true && !isError ?
+                    data.length !== 0 && isLoading !== true && isError === false ?
                         data.map((el, index) => {
                             const bio = el.playerProfile.bio;
 

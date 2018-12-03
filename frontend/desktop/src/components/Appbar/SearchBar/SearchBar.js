@@ -10,13 +10,13 @@ let textFieldRef = React.createRef();
 const searchBar = (props) => {
     return (
         <div className="SearchBar">
-            <InputBase
-                inputRef={(ref) => textFieldRef = ref}
-                className="searchTextField"
-                placeholder="Firstname, then Lastname"
-                onKeyPress={(e) => props.searchBtnOnKeyPress(e, textFieldRef)}
-            />
-            <div className="searchBtn">
+                <InputBase
+                    inputRef={(ref) => textFieldRef = ref}
+                    className="searchTextField"
+                    placeholder="Firstname, then Lastname"
+                    onKeyPress={(e) => props.searchBtnOnKeyPress(e, textFieldRef)}
+                />
+                <div className="searchBtn">
                 <IconButton
                     disabled={props.btnDisabled}
                     onClick={() => props.searchBtnOnClick(textFieldRef)}

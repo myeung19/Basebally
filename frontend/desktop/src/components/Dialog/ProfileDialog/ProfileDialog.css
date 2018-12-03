@@ -1,0 +1,14 @@
+.ProfileDialog{
+
+}
+
+.profileContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.profileImg {
+    display: flex;
+    justify-content: center;
+}
