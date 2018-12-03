@@ -4,10 +4,8 @@ import {
     Button,
     Text,
     Icon,
-    Item,
     Footer,
     FooterTab,
-    Label
 } from "native-base";
 import GamePage from '../../Page/GamePage/GamePage';
 import StandingsPage from '../../Page/StandingsPage/StandingsPage';
@@ -66,5 +64,4 @@ const nav = createAppContainer(createBottomTabNavigator(
     )
 );
 
-// active={props.navigationState.index === 0}
 export default nav;

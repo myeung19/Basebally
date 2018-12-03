@@ -1,20 +1,30 @@
 import React, {Component} from 'react';
-import {
-    Text,
-    Container,
-    Content
-} from "native-base";
-
+import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
 
 class SearchPage extends Component {
+    constructor() {
+        super();
+
+        this.state = {};
+        this.searchTextField = React.createRef();
+    }
+
+    handleSearchBtnClick = () => {
+        console.log(this.searchTextField.current._root._lastNativeText);
+    };
+
     render() {
-        console.log(this.props.navigation.state);
-        console.log(this.props.navigation.state.routeName);
         return (
             <Container>
-                <Content padder style={{ marginTop: 20}}>
-                    <Text>Search</Text>
-                </Content>
+                <Header searchBar rounded>
+                    <Item>
+                        <Icon name="ios-search" />
+                        <Input keyboardType="default" placeholder="Search" ref={this.searchTextField}/>
+                    </Item>
+                    <Button transparent onPress={this.handleSearchBtnClick}>
+                        <Text>Search</Text>
+                    </Button>
+                </Header>
             </Container>
         );
     }
