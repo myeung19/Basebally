@@ -1,33 +1,19 @@
-import React, {Component} from 'react';
-import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
+import React from "react";
+import { createAppContainer, createStackNavigator } from "react-navigation";
+import SearchScreen from '../../Screen/SearchScreen/SearchScreen';
+import ProfileScreen from '../../Screen/ProfileScreen/ProfileScreen';
 
-class SearchPage extends Component {
-    constructor() {
-        super();
-
-        this.state = {};
-        this.searchTextField = React.createRef();
+const nav = createStackNavigator(
+    {
+        Search: {
+            screen: props => <SearchScreen { ...props } />,
+        },
+        Profile: {
+            screen: props => <ProfileScreen { ...props } />,
+        },
     }
+);
 
-    handleSearchBtnClick = () => {
-        console.log(this.searchTextField.current._root._lastNativeText);
-    };
+export default createAppContainer(nav);
 
-    render() {
-        return (
-            <Container>
-                <Header searchBar rounded>
-                    <Item>
-                        <Icon name="ios-search" />
-                        <Input keyboardType="default" placeholder="Search" ref={this.searchTextField}/>
-                    </Item>
-                    <Button transparent onPress={this.handleSearchBtnClick}>
-                        <Text>Search</Text>
-                    </Button>
-                </Header>
-            </Container>
-        );
-    }
-}
-
-export default SearchPage;
+// export default SearchScreen;

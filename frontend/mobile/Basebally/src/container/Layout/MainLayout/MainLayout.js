@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createBottomTabNavigator, TabBarBottom, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import {
     Button,
     Text,
@@ -57,11 +57,9 @@ const nav = createAppContainer(createBottomTabNavigator(
                         </Button>
                     </FooterTab>
                 </Footer>
-            )
-                ;
+            );
         }
-    }
-    )
+    })
 );
 
 export default nav;

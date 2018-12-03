@@ -3,7 +3,6 @@ import axios from "axios";
 import { RefreshControl } from 'react-native';
 import { Container, Header, Content, List, ListItem, Right, Spinner, Text } from 'native-base';
 import DescriptionRow from '../../../component/List/DesciptionRow/DesciptionRow';
-import { getTeamInfo } from "../../../util/utils";
 
 class StandingsPage extends Component {
     state = {
@@ -14,7 +13,7 @@ class StandingsPage extends Component {
 
     componentDidMount() {
         console.log("In com did mount");
-        console.log("In com did mount - after setting to true", this.state.isLoadingFirstTime);
+        console.log("In com did mount - after setting to true");
         this.getDataFromApi();
         console.log("In com did mount - after fetching data");
 
@@ -46,7 +45,7 @@ class StandingsPage extends Component {
     }
 
     render() {
-        const { data, isLoading, isLoadingFirstTime } = this.state;
+        const { data, isLoading } = this.state;
         const keys = Object.keys(data);
         console.log(Object.keys(data).length);
 
@@ -55,10 +54,10 @@ class StandingsPage extends Component {
                 <Content
                     refreshControl={ <RefreshControl refreshing={ isLoading } onRefresh={ this.contentOnRefresh } /> }>
                     <List>
-                        {
-                            isLoadingFirstTime ?
-                                <Spinner color='blue' /> : null
-                        }
+                        {/*{*/}
+                            {/*isLoadingFirstTime ?*/}
+                                {/*<Spinner color='blue' /> : null*/}
+                        {/*}*/}
                         {
                             Object.keys(data).length !== 0 ?
                                 keys.map((el, index) => {
