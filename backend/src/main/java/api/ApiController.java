@@ -24,7 +24,7 @@ public class ApiController
         return "{ \"status\": \"200\" }";
     }
 
-    @GetMapping("/game")
+    @GetMapping(path = "/game", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String getGame() throws IOException
     {
         String[] games = {"[{\"Inning\": \"Final\", \"homeTeam\": \"DET\", \"homeScore\": 5, \"awayTeam\": \"NYY\", \"awayScore\": 10}, {\"Inning\": \"1st\", \"homeTeam\": \"SF\", \"homeScore\": 15, \"awayTeam\": \"SD\", \"awayScore\": 1}]",
