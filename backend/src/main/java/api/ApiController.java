@@ -29,7 +29,7 @@ public class ApiController
     {
         String[] games = {"[{\"Inning\": \"Final\", \"homeTeam\": \"DET\", \"homeScore\": 5, \"awayTeam\": \"NYY\", \"awayScore\": 10}, {\"Inning\": \"1st\", \"homeTeam\": \"SF\", \"homeScore\": 15, \"awayTeam\": \"SD\", \"awayScore\": 1}]",
                 "[{\"Inning\": \"Final\", \"homeTeam\": \"LAA\", \"homeScore\": 6, \"awayTeam\": \"LAD\", \"awayScore\": 10}, {\"Inning\": \"7th\", \"homeTeam\": \"BOS\", \"homeScore\": 10, \"awayTeam\": \"NYY\", \"awayScore\": 1}]"};
-        return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(games[new Random().nextInt(1)]);;
+        return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(games[new Random().nextInt(1)]);
     }
 
     @RequestMapping(path = "/team_standings", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
