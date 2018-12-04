@@ -12,7 +12,8 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 900,
         height: 680,
-        title: "Basebally"
+        title: "Basebally",
+        icon: path.join(__dirname, '../src/assets/icons/png/icon_32@2x.png')
     });
     mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
     mainWindow.on('closed', () => mainWindow = null);
