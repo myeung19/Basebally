@@ -128,12 +128,12 @@ public class ApiDataExtractor
             JsonNode SB = rootNode.get("StolenBases");
             JsonNode OPS = rootNode.get("BatterOnBasePlusSluggingPct");
 
-            stats.put("GamesPlayed", AB);
-            stats.put("Wins", AVG);
-            stats.put("Losses", HR);
-            stats.put("EarnedRunAvg", RBI);
-            stats.put("InningsPitched", SB);
-            stats.put("BatterStrikeouts", OPS);
+            stats.put("AtBats", AB);
+            stats.put("BattingAvg", AVG);
+            stats.put("Homeruns", HR);
+            stats.put("RunsBattedIn", RBI);
+            stats.put("StolenBases", SB);
+            stats.put("BatterOnBasePlusSluggingPct", OPS);
         }
 
         return mapper.valueToTree(stats);
