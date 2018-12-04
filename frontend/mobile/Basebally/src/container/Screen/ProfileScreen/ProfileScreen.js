@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { Button, Body, Container, Left, Header, Icon, Right, Title } from "native-base";
+import { Image } from 'react-native';
+import { Button, Body, Container, Content, Left, Header, Icon, Right, Title, Text } from "native-base";
 
 class ProfileScreen extends Component {
     render() {
         const { navigation } = this.props;
-        const name = navigation.getParam('name', 'null');
+        const data = navigation.getParam('data', 'null');
+        console.log(data);
+
+        const bio = data.playerProfile.bio;
+        const stats = data.playerStats;
 
         return (
             <Container>
@@ -15,10 +20,13 @@ class ProfileScreen extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>{ name }</Title>
+                        <Title>{data.playerProfile.bio.FirstName} {data.playerProfile.bio.LastName}</Title>
                     </Body>
                     <Right />
                 </Header>
+                <Content contentContainerStyle={{ display: "flex", justifyContent: "center", alignItem: "center" }}>
+                    <Image source={{uri: bio.officialImageSrc}} style={{ width: 150, height: 300}}/>
+                </Content>
             </Container>
         );
     }

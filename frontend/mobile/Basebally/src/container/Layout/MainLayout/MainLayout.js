@@ -24,6 +24,7 @@ const nav = createBottomTabNavigator(
         }
     },
     {
+        initialRouteName: 'SearchPage',
         tabBarPosition: "bottom",
         tabBarComponent: props => {
             const { index } = props.navigation.state;
