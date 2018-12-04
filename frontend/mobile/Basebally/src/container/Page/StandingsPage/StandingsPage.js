@@ -8,7 +8,6 @@ class StandingsPage extends Component {
     state = {
         data: {},
         isLoading: false,
-        // isLoadingFirstTime: true
     };
 
     componentDidMount() {
@@ -16,10 +15,6 @@ class StandingsPage extends Component {
         console.log("In com did mount - after setting to true");
         this.getDataFromApi();
         console.log("In com did mount - after fetching data");
-
-        // this.setState({
-        //     isLoadingFirstTime: false
-        // });
     }
 
     contentOnRefresh = () => {
@@ -54,13 +49,9 @@ class StandingsPage extends Component {
                 <Content
                     refreshControl={ <RefreshControl refreshing={ isLoading } onRefresh={ this.contentOnRefresh } /> }>
                     <List>
-                        {/*{*/}
-                            {/*isLoadingFirstTime ?*/}
-                                {/*<Spinner color='blue' /> : null*/}
-                        {/*}*/}
                         {
                             Object.keys(data).length !== 0 ?
-                                keys.map((el, index) => {
+                                keys.map((el, index)  => {
                                     const rankings = data[el];
 
                                     return (
