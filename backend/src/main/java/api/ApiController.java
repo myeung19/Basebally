@@ -21,7 +21,7 @@ public class ApiController
     @GetMapping("/")
     public String homePage()
     {
-        return "{ \"status\": \"200\" }";
+        return "API is currently running";
     }
 
     @GetMapping(path = "/game", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
