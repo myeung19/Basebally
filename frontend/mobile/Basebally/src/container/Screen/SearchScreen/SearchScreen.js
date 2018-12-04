@@ -64,7 +64,7 @@ class SearchScreen extends Component {
     }
 
     render() {
-        const { data, errorMsg, isLoading, isErrorToastShown, isSearchBtnDisabled } = this.state;
+        const { data, errorMsg, isError, isLoading, isErrorToastShown, isSearchBtnDisabled } = this.state;
         const { navigate } = this.props.navigation;
 
         return (
@@ -99,17 +99,16 @@ class SearchScreen extends Component {
                     {
                         <List>
                             {
-                                data.length !== 0 ?
+                                data.length !== 0 && isError === false?
                                     data.map((el, i) => {
                                         const bio = el.playerProfile.bio;
                                         return (
-                                            <ListItem key={ i }>
+                                            <ListItem key={ i } onPress={ () => navigate("Profile", { data: data[i] }) } >
                                                 <Left>
                                                     <Text>#{ bio.JerseyNumber } - { bio.FirstName } { bio.LastName }</Text>
                                                 </Left>
                                                 <Right>
-                                                    <Icon name="arrow-forward"
-                                                          onPress={ () => navigate("Profile", { data: data[i] }) } />
+                                                    <Icon name="arrow-forward" />
                                                 </Right>
                                             </ListItem>
                                         )

@@ -20,7 +20,7 @@ const gameCard = (props) => {
                         teamName={ hTeam.name }
                         imgSrc={ hTeam.imgSrc } />
                     <h2>{ data.homeScore }</h2>
-                    <p>Final</p>
+                    <p>{ data.Inning }</p>
                     <h2>{ data.awayScore }</h2>
                     <GameIcon
                         teamCity={ aTeam.city }
