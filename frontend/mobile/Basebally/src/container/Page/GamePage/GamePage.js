@@ -29,7 +29,7 @@ class GamePage extends Component {
         axios.get("http://www.basebally.net/api/game")
             .then((response) => {
                 this.setState({
-                    data: JSON.parse(response.data),
+                    data: response.data,
                 })
             })
     }

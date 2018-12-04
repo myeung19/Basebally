@@ -15,7 +15,7 @@ class SearchScreen extends Component {
 
     render() {
         return (
-            <Container>
+            <Container style={{ marginTop: 0 }}>
                 <Header searchBar rounded>
                     <Item>
                         <Icon name="ios-search" />

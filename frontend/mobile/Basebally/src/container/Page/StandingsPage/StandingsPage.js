@@ -33,7 +33,7 @@ class StandingsPage extends Component {
     };
 
     getDataFromApi() {
-        axios.get("http://www.basebally.net/api/team_standings")
+        axios.get("http://www.basebally.net/api/standings")
             .then((response) => {
                 console.log(response);
                 console.log(response.data);

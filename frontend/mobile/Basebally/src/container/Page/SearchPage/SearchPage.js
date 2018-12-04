@@ -3,17 +3,15 @@ import { createAppContainer, createStackNavigator } from "react-navigation";
 import SearchScreen from '../../Screen/SearchScreen/SearchScreen';
 import ProfileScreen from '../../Screen/ProfileScreen/ProfileScreen';
 
-const nav = createStackNavigator(
+export default createStackNavigator(
     {
-        Search: {
-            screen: props => <SearchScreen { ...props } />,
-        },
-        Profile: {
-            screen: props => <ProfileScreen { ...props } />,
-        },
+        Search: SearchScreen,
+        Profile: ProfileScreen
+    },
+    {
+        initialRouteName: 'Search',
+        headerMode: 'none',
     }
 );
-
-export default createAppContainer(nav);
 
 // export default SearchScreen;

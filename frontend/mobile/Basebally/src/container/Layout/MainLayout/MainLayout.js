@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator, createAppContainer, createSwitchNavigator } from "react-navigation";
 import {
     Button,
     Text,
@@ -9,18 +9,18 @@ import {
 } from "native-base";
 import GamePage from '../../Page/GamePage/GamePage';
 import StandingsPage from '../../Page/StandingsPage/StandingsPage';
-import SearchPage from '../../Page/SearchPage/SearchPage';
+import SearchNavigator from '../../Page/SearchPage/SearchPage';
 
-const nav = createAppContainer(createBottomTabNavigator(
+const nav = createBottomTabNavigator(
     {
         GamePage: {
-            screen: props => <GamePage { ...props } />
+            screen: GamePage
         },
         StandingsPage: {
-            screen: props => <StandingsPage { ...props } />
+            screen: StandingsPage
         },
         SearchPage: {
-            screen: props => <SearchPage { ...props } />
+            screen: SearchNavigator
         }
     },
     {
@@ -59,7 +59,8 @@ const nav = createAppContainer(createBottomTabNavigator(
                 </Footer>
             );
         }
-    })
+    }
 );
 
-export default nav;
+
+export default createAppContainer(nav);
