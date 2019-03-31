@@ -20,7 +20,7 @@ For more specific detail, please click on links below to view the info of each e
 - Ability to search for a particular active player
 
 ## Restriction 
-Due the restriction of the data source, this appliction is only showing data in the season of 2018
+Due the restriction of the data source, this appliction is only showing data in the season of 2018.
 
 ## License
 This project is licensed under the MIT License - click [this](LICENSE.md) for more detail
