@@ -1,4 +1,4 @@
-<img src="icon.png" height="128" align="right" />
+<div style="background-color: white"><img src="icon.png" height="128" align="right" /></div>
 
 # Basebally
 > An application to view basic MLB status 
