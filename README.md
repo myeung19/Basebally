@@ -24,4 +24,3 @@ Due the restriction of the data source, this appliction is only showing data in 
 
 ## License
 This project is licensed under the MIT License - click [this](LICENSE.md) for more detail.
-
