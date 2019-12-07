@@ -1,7 +1,7 @@
 <div style="background-color: white"><img src="icon.png" height="128" align="right" /></div>
 
 # Basebally
-> An application to view basic MLB status 
+> An application to view basic MLB stats
 
 ## Objective
 This multi-platform applciation is built during a 10 weeks capstone course at the last quarter in my junior year in college, which detemine the eligbillty to enter the last year of college.
