@@ -11,8 +11,8 @@ The purpose of this application is to experience how to build a complete fullsta
 For more specific detail, please click on links below to view the info of each end.
 
 - [Frontend](./frontend/frontend.md)
-  - [Desktop version](./frontend/desktop/desktop.md)
-  - [Mobile version](./frontend/mobile/mobile.md)
+  - [Desktop](./frontend/desktop/desktop.md)
+  - [Mobile](./frontend/mobile/mobile.md)
 - [Backend](./backend/backend.md)
 
 ## Feature
